@@ -1,0 +1,38 @@
+---
+- name: Update Homebrew
+  homebrew:
+    update_homebrew: yes
+
+- name: Brew Cask Installs
+  homebrew_cask:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - iterm2
+    - dropbox
+    - slack
+    - spectacle
+    - google-chrome
+    - spotify
+    - docker
+    - steam
+    - clover-configurator
+    - adobe-creative-cloud
+    - visual-studio-code
+
+- name: Brew Installs
+  homebrew: 
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - watch
+    - bash-completion
+    - jq
+    - tree
+    - wget
+    - tmux
+    - git
+    - ansible
+    - node
+    - zsh
+...

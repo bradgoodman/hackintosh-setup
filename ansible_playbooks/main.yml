@@ -1,0 +1,6 @@
+---
+- hosts: 127.0.0.1
+  tasks:
+    - name: Brew Install Apps
+      include_tasks: /Users/brad/Git/hackintosh-setup/ansible_playbooks/tasks/brew_install_apps.yml
+...
