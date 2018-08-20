@@ -1,0 +1,13 @@
+---
+- name: Install Visual Studio Code Extentions
+  command: "code --install-extentions {{ item }}"
+  with_items:
+    - PKief.material-icon-theme
+    - vscodevim.vim
+    - vscoss.vscode-ansible
+    - zhuangtongfa.Material-theme
+    - christian-kohler.npm-intellisense
+    - dbaeumer.vscode-eslint
+    - dhoeric.ansible-vault
+    - haaaad.ansible
+...
