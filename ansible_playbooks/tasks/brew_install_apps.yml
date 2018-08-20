@@ -19,6 +19,8 @@
     - clover-configurator
     - adobe-creative-cloud
     - visual-studio-code
+    - lastpass
+    - android-studio
 
 - name: Brew Installs
   homebrew: 
