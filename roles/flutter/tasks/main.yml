@@ -1,10 +1,8 @@
 ---
-- name: Import flutter vars
-  include_vars: /Users/brad/Git/hackintosh-setup/playbooks/vars/flutter.vars
-
 - name: Get Flutter Version
   command: flutter --version
   register: flutter_version
+  changed_when: False
 
 - name: Check for Flutter SDK
   stat:
@@ -22,7 +20,7 @@
   unarchive:
     src: "~/Downloads/flutter_macos_v{{ flutter_target_version }}-beta.zip"
     dest: ~/Git
-  when: flutter_update.changed and flutter_version.stdout_lines[0].split()[1] != flutter_target_version 
+  when: flutter_latest_version
 
 - name: Add Flutter to Path
   lineinfile:

@@ -1,0 +1,1 @@
+flutter_latest_version: flutter_version.stdout_lines[0].split()[1] != flutter_target_version
