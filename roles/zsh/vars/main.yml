@@ -1,0 +1,1 @@
+zsh_user_config: "~{{ zsh_user }}/.zshrc"

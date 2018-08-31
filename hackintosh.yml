@@ -1,7 +1,5 @@
 ---
 - hosts: 127.0.0.1
   roles:
-    - base_apps
-    - flutter
-    - studio_code
+    - zsh
 ...

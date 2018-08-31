@@ -1,0 +1,50 @@
+---
+- name: Check for Powerline Fonts
+  stat:
+    path: ~/Downloads/fonts
+  register: powerline_fonts
+
+- name: Download Powerline Font
+  git: 
+    repo: https://github.com/powerline/fonts.git
+    dest: ~/Downloads/fonts
+  when: powerline_fonts.stat.exists == false
+
+- name: Install Powerline Fonts
+  command: ~/Downloads/fonts/install.sh
+  when: powerline_fonts.stat.exists == false
+
+- name: Cleanup Downloaded Powerline Fonts
+  file:
+    path: ~/Downloads/fonts/
+    state: absent
+
+- name: Check for Cobalt2 Theme
+  stat:
+    path: ~/.oh-my-zsh/themes/cobalt2.zsh-theme
+  register: cobalt2_theme
+
+- name: Download Cobalt2 Theme
+  git:
+    repo: https://github.com/wesbos/Cobalt2-iterm.git
+    dest: ~/Downloads/Cobalt2
+  when: cobalt2_theme.stat.exists == false
+
+- name: Copy over Cobalt2 Theme
+  copy:
+    src: ~/Downloads/Cobalt2/cobalt2.zsh-theme
+    dest: ~/.oh-my-zsh/themes/
+  when: cobalt2_theme.stat.exists == false
+
+- name: Cleanup Cobalt2 Theme
+  file:
+    path: ~/Downloads/Cobalt2/
+    state: absent
+
+- name: Copy .zshrc
+  copy:
+    src: zshrc
+    dest: "{{ zsh_user_config }}"
+    owner: "{{ zsh_user }}"
+    backup: yes
+...

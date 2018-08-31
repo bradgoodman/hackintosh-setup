@@ -13,7 +13,7 @@
   get_url:
     url: "https://storage.googleapis.com/flutter_infra/releases/beta/macos/flutter_macos_v{{ flutter_target_version }}-beta.zip"
     dest: ~/Downloads
-  when: flutter_sdk.stat.exists == False and flutter_version.stdout_lines[0].split()[1] != flutter_target_version 
+  when: flutter_sdk.stat.exists == False and flutter_latest_version 
   register: flutter_update 
 
 - name: Extract Flutter
@@ -25,7 +25,7 @@
 - name: Add Flutter to Path
   lineinfile:
     path: /etc/paths
-    line: /Users/brad/Git/flutter/bin
+    line: "{{ flutter_user }}"/Git/flutter/bin
   become: yes
 
 - name: Update Flutter
